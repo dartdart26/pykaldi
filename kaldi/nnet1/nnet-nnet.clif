@@ -1,0 +1,14 @@
+from "base/iostream-clifwrap.h" import *
+from "cudamatrix/cu-matrix-clifwrap.h" import *
+
+from "nnet/nnet-nnet.h":
+  namespace `kaldi::nnet1`:
+    class Nnet:
+      def `Read` as read(self, in: istream, binary: bool) -> self
+
+      def `SetDropoutRate` as set_dropout_rate(self, r: float) -> self
+
+      def `Feedforward` as feed_forward(self, in: CuMatrixBase, out: CuMatrix) -> self
+
+      @add__init__
+      def `Nnet` as from_other(self, other: Nnet)
